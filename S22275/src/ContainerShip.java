@@ -2,6 +2,7 @@ public class ContainerShip {
     private final int x;
     private final int y;
     private final int z;
+    private int index = 0;
 
     public ContainerShip(int x, int y, int z) {
         this.x = x;
@@ -10,7 +11,6 @@ public class ContainerShip {
     }
 
     public Container[][][] load(Container[] containers) {
-        int index = 0;
         Container[][][] containerShip = new Container[x][y][z];
         for (int z = 0; z < containerShip[0][0].length; z++) {
             if (z % 2 == 0) {
@@ -45,5 +45,6 @@ public class ContainerShip {
         }
         return containerShip;
     }
+
 }
 

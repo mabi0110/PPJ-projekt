@@ -1,9 +1,10 @@
 public class Container {
-
     private double weight;
     private String content;
     private int id;
     public static int counter = 1;
+
+    private ContainerShip containerShip;
 
     public double getWeight() {
         return weight;
@@ -48,8 +49,11 @@ public class Container {
         return 100 + (Math.random() * ((500 - 100) + 1));
     }
 
+
     @Override
     public String toString() {
         return id + ";" + weight + ";" + content;
     }
+
+
 }

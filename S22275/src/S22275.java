@@ -1,30 +1,54 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class S22275 {
-    private static final String FILE_NAME = "containers.txt";
-    private static final int ROW = 4;
-    private static final int COLUMN = 6;
-    private static final int HEIGHT = 4;
-    //    private static final int ROW = 30;
-//    private static final int COLUMN = 50;
-//    private static final int HEIGHT = 10;
+    private static final String FILE_NAME_TXT = "containers.txt";
+    private static final String FILE_NAME_XML = "containers.xml";
+    private static final int ROW = 4; //30
+    private static final int COLUMN = 6; //50
+    private static final int HEIGHT = 1; //10
     private static final Container[] containers = new Container[ROW * COLUMN * HEIGHT];
     private static final ContainerShip containerShip = new ContainerShip(ROW, COLUMN, HEIGHT);
 
     public static void main(String[] args) {
         createContainers();
-        writeContainersToFile();
+        writeContainersToTxtFile();
         readContainersFromFile();
         sortContainersByWeight();
 //        printContainers();
         Container[][][] loadedContainerShip = containerShip.load(containers);
         checkWeights(loadedContainerShip);
-        checkWeights1(loadedContainerShip);
         printLoadedContainerShip(loadedContainerShip);
+        writeContainersToXmlFile();
 
 
+    }
+
+    private static void writeContainersToXmlFile() {
+        try (
+                FileWriter fileWriter = new FileWriter(FILE_NAME_XML);
+                BufferedWriter writer = new BufferedWriter(fileWriter)
+        ) {
+            String stringFormat = ("%-6s %-10s %-20s %-12s %n");
+            writer.write(stringFormat.formatted("id\t", "[x][y][z]\t", "weight\t", "content"));
+            for (Container container : containers) {
+//                String dataFormat = ("%-6d %-10s %-20f %-12s %n");
+//                writer.write(dataFormat.formatted(container.getId() + "\t"
+//                        + "[x][y][z]\t"
+//                        + container.getWeight() + "\t"
+//                        + container.getContent()));
+                writer.write(container.getId() + "\t"
+                        + "[x][y][z]\t"
+                        + container.getWeight() + "\t"
+                        + container.getContent());
+                writer.newLine();
+            }
+            System.out.println("Zapisano kontenery w pliku " + FILE_NAME_XML);
+        } catch (IOException e) {
+            System.err.println("Błąd zapisu do pliku " + FILE_NAME_XML);
+        }
     }
 
     private static void checkWeights(Container[][][] loadedContainerShip) {
@@ -51,62 +75,13 @@ public class S22275 {
                 }
             }
         }
-        System.out.println();
-        System.out.println("sumUW: " + sumUpperWeight);
-        System.out.println("sumLW: " + sumLowerWeight);
-        System.out.println("sumLeftW: " + sumLeftWeight);
-        System.out.println("sumRightW: " + sumRightWeight);
-        System.out.println();
-    }
-
-
-    private static void checkWeights1(Container[][][] loadedContainerShip) {
-        double sumUpperWeigth = 0;
-
-        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
-            for (int x = 0; x < loadedContainerShip.length / 2; x++) {
-                for (int y = 0; y < loadedContainerShip[0].length; y++) {
-                    sumUpperWeigth += loadedContainerShip[x][y][z].getWeight();
-                }
-            }
-        }
-
-        double sumLowerWeigth = 0;
-
-        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
-            for (int x = loadedContainerShip.length / 2; x < loadedContainerShip.length; x++) {
-                for (int y = 0; y < loadedContainerShip[0].length; y++) {
-                    sumLowerWeigth += loadedContainerShip[x][y][z].getWeight();
-                }
-            }
-        }
-
-        double sumLeftWeigth = 0;
-
-        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
-            for (int x = 0; x < loadedContainerShip.length; x++) {
-                for (int y = 0; y < loadedContainerShip[0].length / 2; y++) {
-                    sumLeftWeigth += loadedContainerShip[x][y][z].getWeight();
-                }
-            }
-        }
-
-        double sumRightWeigth = 0;
-
-        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
-            for (int x = 0; x < loadedContainerShip.length; x++) {
-                for (int y = loadedContainerShip[0].length / 2; y < loadedContainerShip[0].length; y++) {
-                    sumRightWeigth += loadedContainerShip[x][y][z].getWeight();
-                }
-            }
-        }
-        System.out.println("sumUW: " + sumUpperWeigth);
-        System.out.println("sumLW: " + sumLowerWeigth);
-        System.out.println("sumLeftW: " + sumLeftWeigth);
-        System.out.println("sumRightW: " + sumRightWeigth);
+        System.out.println("Weight check");
+        System.out.println("sum of upper weight: " + sumUpperWeight);
+        System.out.println("sum of lower weight: " + sumLowerWeight);
+        System.out.println("sum of left weight: " + sumLeftWeight);
+        System.out.println("sum of right weight: " + sumRightWeight);
         System.out.println();
     }
-
 
     private static void printLoadedContainerShip(Container[][][] loadedContainerShip) {
         for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
@@ -144,15 +119,15 @@ public class S22275 {
     private static void readContainersFromFile() {
         int index = 0;
         Container container;
-        try (Scanner scanner = new Scanner(new File(FILE_NAME))) {
+        try (Scanner scanner = new Scanner(new File(FILE_NAME_TXT))) {
             while (scanner.hasNextLine()) {
                 container = createContainerFromLine(scanner.nextLine());
                 containers[index] = container;
                 index++;
             }
-            System.out.println("Wczytano kontenery z pliku " + FILE_NAME);
+            System.out.println("Wczytano kontenery z pliku " + FILE_NAME_TXT);
         } catch (FileNotFoundException e) {
-            System.err.println("Nie znaleziono pliku " + FILE_NAME);
+            System.err.println("Nie znaleziono pliku " + FILE_NAME_TXT);
         }
     }
 
@@ -164,18 +139,18 @@ public class S22275 {
         return new Container(id, weight, content);
     }
 
-    private static void writeContainersToFile() {
+    private static void writeContainersToTxtFile() {
         try (
-                FileWriter fileWriter = new FileWriter(FILE_NAME);
+                FileWriter fileWriter = new FileWriter(FILE_NAME_TXT);
                 BufferedWriter writer = new BufferedWriter(fileWriter)
         ) {
             for (Container container : containers) {
                 writer.write(String.valueOf((container)));
                 writer.newLine();
             }
-            System.out.println("Zapisano kontenery w pliku " + FILE_NAME);
+            System.out.println("Zapisano kontenery w pliku " + FILE_NAME_TXT);
         } catch (IOException e) {
-            System.err.println("Błąd zapisu do pliku " + FILE_NAME);
+            System.err.println("Błąd zapisu do pliku " + FILE_NAME_TXT);
         }
     }
 
