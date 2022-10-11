@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7bcbdb6d-8d23-4526-baa1-a15e02256eb4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/S22275/src/ContainerShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/S22275/src/ContainerShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/S22275/src/S22275.java" beforeDir="false" afterPath="$PROJECT_DIR$/S22275/src/S22275.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/containers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/containers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/s22275/ContainerShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/s22275/ContainerShip.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/s22275/S22275.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/s22275/S22275.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +67,11 @@
           <url>file://$PROJECT_DIR$/S22275/src/S22275.java</url>
           <line>21</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/S22275/src/S22275.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -7,7 +7,7 @@ public class S22275 {
     private static final int ROW = 4;
     private static final int COLUMN = 6;
     private static final int HEIGHT = 4;
-//    private static final int ROW = 30;
+    //    private static final int ROW = 30;
 //    private static final int COLUMN = 50;
 //    private static final int HEIGHT = 10;
     private static final Container[] containers = new Container[ROW * COLUMN * HEIGHT];
@@ -20,10 +20,93 @@ public class S22275 {
         sortContainersByWeight();
 //        printContainers();
         Container[][][] loadedContainerShip = containerShip.load(containers);
+        checkWeights(loadedContainerShip);
+        checkWeights1(loadedContainerShip);
         printLoadedContainerShip(loadedContainerShip);
 
 
     }
+
+    private static void checkWeights(Container[][][] loadedContainerShip) {
+        double sumUpperWeight = 0, sumLowerWeight = 0, sumLeftWeight = 0, sumRightWeight = 0;
+        
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = 0; x < loadedContainerShip.length; x++) {
+                for (int y = 0; y < loadedContainerShip[0].length; y++) {
+                    if (x < loadedContainerShip.length / 2) {
+                        if (y < loadedContainerShip[0].length / 2) {
+                            sumLeftWeight += loadedContainerShip[x][y][z].getWeight();
+                        } else {
+                            sumRightWeight += loadedContainerShip[x][y][z].getWeight();
+                        }
+                        sumUpperWeight += loadedContainerShip[x][y][z].getWeight();
+                    } else {
+                        if (y < loadedContainerShip[0].length / 2) {
+                            sumLeftWeight += loadedContainerShip[x][y][z].getWeight();
+                        } else {
+                            sumRightWeight += loadedContainerShip[x][y][z].getWeight();
+                        }
+                        sumLowerWeight += loadedContainerShip[x][y][z].getWeight();
+                    }
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("sumUW: " + sumUpperWeight);
+        System.out.println("sumLW: " + sumLowerWeight);
+        System.out.println("sumLeftW: " + sumLeftWeight);
+        System.out.println("sumRightW: " + sumRightWeight);
+        System.out.println();
+    }
+
+
+    private static void checkWeights1(Container[][][] loadedContainerShip) {
+        double sumUpperWeigth = 0;
+
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = 0; x < loadedContainerShip.length / 2; x++) {
+                for (int y = 0; y < loadedContainerShip[0].length; y++) {
+                    sumUpperWeigth += loadedContainerShip[x][y][z].getWeight();
+                }
+            }
+        }
+
+        double sumLowerWeigth = 0;
+
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = loadedContainerShip.length / 2; x < loadedContainerShip.length; x++) {
+                for (int y = 0; y < loadedContainerShip[0].length; y++) {
+                    sumLowerWeigth += loadedContainerShip[x][y][z].getWeight();
+                }
+            }
+        }
+
+        double sumLeftWeigth = 0;
+
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = 0; x < loadedContainerShip.length; x++) {
+                for (int y = 0; y < loadedContainerShip[0].length / 2; y++) {
+                    sumLeftWeigth += loadedContainerShip[x][y][z].getWeight();
+                }
+            }
+        }
+
+        double sumRightWeigth = 0;
+
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = 0; x < loadedContainerShip.length; x++) {
+                for (int y = loadedContainerShip[0].length / 2; y < loadedContainerShip[0].length; y++) {
+                    sumRightWeigth += loadedContainerShip[x][y][z].getWeight();
+                }
+            }
+        }
+        System.out.println("sumUW: " + sumUpperWeigth);
+        System.out.println("sumLW: " + sumLowerWeigth);
+        System.out.println("sumLeftW: " + sumLeftWeigth);
+        System.out.println("sumRightW: " + sumRightWeigth);
+        System.out.println();
+    }
+
 
     private static void printLoadedContainerShip(Container[][][] loadedContainerShip) {
         for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
@@ -38,17 +121,17 @@ public class S22275 {
     }
 
     private static void sortContainersByWeight() {
-          int n = containers.length;
-          while (n > 1){
-              for (int i = 0; i < n - 1 ; i++) {
-                  if (containers[i].getWeight() < containers[i + 1].getWeight()) {
-                      Container tempContainer = containers[i];
-                      containers[i] = containers[i + 1];
-                      containers[i + 1] = tempContainer;
-                  }
-              }
-              n = n - 1;
-          }
+        int n = containers.length;
+        while (n > 1) {
+            for (int i = 0; i < n - 1; i++) {
+                if (containers[i].getWeight() < containers[i + 1].getWeight()) {
+                    Container tempContainer = containers[i];
+                    containers[i] = containers[i + 1];
+                    containers[i + 1] = tempContainer;
+                }
+            }
+            n = n - 1;
+        }
     }
 
     private static void printContainers() {
