@@ -4,26 +4,40 @@ import java.util.Scanner;
 
 public class S22275 {
     private static final String FILE_NAME = "containers.txt";
-    private static final int ROW = 6;
+    private static final int ROW = 4;
     private static final int COLUMN = 6;
     private static final int HEIGHT = 4;
 //    private static final int ROW = 30;
 //    private static final int COLUMN = 50;
 //    private static final int HEIGHT = 10;
-    private static Container[] containers = new Container[ROW * COLUMN * HEIGHT];
-
+    private static final Container[] containers = new Container[ROW * COLUMN * HEIGHT];
     private static final ContainerShip containerShip = new ContainerShip(ROW, COLUMN, HEIGHT);
 
     public static void main(String[] args) {
-        containers = createContainers();
-        writeContainersToFile(containers);
-        containers = readContainersFromFile();
-        containers = sortContainersByWeight();
-        printContainers();
-        double[][][] loadedContainers = containerShip.load(containers);
+        createContainers();
+        writeContainersToFile();
+        readContainersFromFile();
+        sortContainersByWeight();
+//        printContainers();
+        Container[][][] loadedContainerShip = containerShip.load(containers);
+        printLoadedContainerShip(loadedContainerShip);
+
+
     }
 
-    private static Container[] sortContainersByWeight() {
+    private static void printLoadedContainerShip(Container[][][] loadedContainerShip) {
+        for (int z = 0; z < loadedContainerShip[0][0].length; z++) {
+            for (int x = 0; x < loadedContainerShip.length; x++) {
+                for (int y = 0; y < loadedContainerShip[0].length; y++) {
+                    System.out.printf("%.2f ", loadedContainerShip[x][y][z].getWeight());
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
+
+    private static void sortContainersByWeight() {
           int n = containers.length;
           while (n > 1){
               for (int i = 0; i < n - 1 ; i++) {
@@ -35,7 +49,6 @@ public class S22275 {
               }
               n = n - 1;
           }
-        return containers;
     }
 
     private static void printContainers() {
@@ -45,7 +58,7 @@ public class S22275 {
         }
     }
 
-    private static Container[] readContainersFromFile() {
+    private static void readContainersFromFile() {
         int index = 0;
         Container container;
         try (Scanner scanner = new Scanner(new File(FILE_NAME))) {
@@ -54,10 +67,10 @@ public class S22275 {
                 containers[index] = container;
                 index++;
             }
+            System.out.println("Wczytano kontenery z pliku " + FILE_NAME);
         } catch (FileNotFoundException e) {
             System.err.println("Nie znaleziono pliku " + FILE_NAME);
         }
-        return containers;
     }
 
     private static Container createContainerFromLine(String line) {
@@ -68,7 +81,7 @@ public class S22275 {
         return new Container(id, weight, content);
     }
 
-    private static void writeContainersToFile(Container[] containers) {
+    private static void writeContainersToFile() {
         try (
                 FileWriter fileWriter = new FileWriter(FILE_NAME);
                 BufferedWriter writer = new BufferedWriter(fileWriter)
@@ -77,12 +90,13 @@ public class S22275 {
                 writer.write(String.valueOf((container)));
                 writer.newLine();
             }
+            System.out.println("Zapisano kontenery w pliku " + FILE_NAME);
         } catch (IOException e) {
             System.err.println("Błąd zapisu do pliku " + FILE_NAME);
         }
     }
 
-    private static Container[] createContainers() {
+    private static void createContainers() {
         Container container = null;
         for (int i = 0; i < containers.length; i++) {
             int randomInt = (int) (Math.random() * 3);
@@ -93,6 +107,5 @@ public class S22275 {
             }
             containers[i] = container;
         }
-        return containers;
     }
 }

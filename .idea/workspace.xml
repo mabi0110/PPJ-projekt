@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bcbdb6d-8d23-4526-baa1-a15e02256eb4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/s22275.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/S22275.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/out/production/S22275/Container.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/out/production/S22275/OpenTopContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/out/production/S22275/RefrigeratedContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/out/production/S22275/S22275.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/out/production/S22275/TankContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/Container.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/ContainerShip.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/OpenTopContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/RefrigeratedContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/S22275.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/S22275/src/TankContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/containers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/Container.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/ContainerShip.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/OpenTopContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/RefrigeratedContainer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/S22275.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/s22275/TankContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/S22275/src/ContainerShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/S22275/src/ContainerShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/S22275/src/S22275.java" beforeDir="false" afterPath="$PROJECT_DIR$/S22275/src/S22275.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/containers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/containers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/s22275/ContainerShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/s22275/ContainerShip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/s22275/S22275.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/s22275/S22275.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,16 +32,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/pulpit/S22275",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/pulpit/S22275&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="S22275" />
@@ -86,14 +65,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/S22275/src/S22275.java</url>
-          <line>25</line>
-          <properties class="S22275" method="sortContainersByWeight">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
+          <line>21</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
