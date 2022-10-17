@@ -18,11 +18,13 @@ public class ContainerShip {
                     if (x % 2 == 0) {
                         for (int y = 0; y < containerShip[0].length; y++) {
                             containerShip[x][y][z] = containers[index];
+                            setPosition(containers, z, x, y);
                             index++;
                         }
                     } else {
                         for (int y = containerShip[0].length - 1; y >= 0; y--) {
                             containerShip[x][y][z] = containers[index];
+                            setPosition(containers, z, x, y);
                             index++;
                         }
                     }
@@ -32,11 +34,13 @@ public class ContainerShip {
                     if (x % 2 == 0) {
                         for (int y = 0; y < containerShip[0].length; y++) {
                             containerShip[x][y][z] = containers[index];
+                            setPosition(containers, z, x, y);
                             index++;
                         }
                     } else {
                         for (int y = containerShip[0].length - 1; y >= 0; y--) {
                             containerShip[x][y][z] = containers[index];
+                            setPosition(containers, z, x, y);
                             index++;
                         }
                     }
@@ -44,6 +48,12 @@ public class ContainerShip {
             }
         }
         return containerShip;
+    }
+
+    private void setPosition(Container[] containers, int z, int x, int y) {
+        containers[index].setX(x);
+        containers[index].setY(y);
+        containers[index].setZ(z);
     }
 
 }
